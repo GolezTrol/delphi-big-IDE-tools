@@ -1,0 +1,40 @@
+package BigIDESpecialActions;
+
+{$R *.res}
+{$ALIGN 8}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO ON}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION ON}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS OFF}
+{$REFERENCEINFO ON}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES OFF}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST OFF}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$DESCRIPTION 'Big IDE Action Hooks'}
+{$DESIGNONLY}
+{$IMPLICITBUILD ON}      
+
+requires
+  rtl,
+  designide,
+  vcl;
+
+contains
+  uBigIDESmartSave in 'uBigIDESmartSave.pas',
+  uBigPropEdits in 'uBigPropEdits.pas',
+  BigProcHook in 'BigProcHook.pas',
+  BigAltGrCrashWorkaround in 'BigAltGrCrashWorkaround.pas';
+
+end.
