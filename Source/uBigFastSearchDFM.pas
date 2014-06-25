@@ -34,7 +34,7 @@ type
     procedure Abandon;
   end;
 
-procedure ScanDFM(Code: string; Search: string; CallBack: TFoundEvent; SearchOptions: TSearchOptions; FindSQLDump: TStrings = nil);
+procedure ScanDFM(Code: string; AFileName: String; Search: string; CallBack: TFoundEvent; SearchOptions: TSearchOptions; FindSQLDump: TStrings = nil);
 
 implementation
 
@@ -83,7 +83,7 @@ begin
 
   if not Terminated then
   try
-    ScanDFM(FCode, FSearch, DoFound, FSearchOptions, FFindSQLDump);
+    ScanDFM(FCode, FFileName, FSearch, DoFound, FSearchOptions, FFindSQLDump);
   except
     on E:EAbort do
     else
@@ -131,7 +131,7 @@ begin
   SetLength(s, j);
 end;
 
-procedure ScanDFM(Code: string; Search: string; CallBack: TFoundEvent; SearchOptions: TSearchOptions; FindSQLDump: TStrings = nil);
+procedure ScanDFM(Code: string; AFileName: String; Search: string; CallBack: TFoundEvent; SearchOptions: TSearchOptions; FindSQLDump: TStrings = nil);
 // This routine scans an entire dfm file and skips most characters. It scans
 // words to find object names and property names. It also triggers on <quote>
 // and <tab> to find strings. Numbers, binary data and operators are skipped.
@@ -408,7 +408,7 @@ begin
           else
             PropertyName := LastProperty + LastPropertyItem;
 
-          CallBack('', FormClass, LastObjectName, PropertyName, LastString + #13#10, LastPropertyLine);
+          CallBack(AFileName, FormClass, LastObjectName, PropertyName, LastString + #13#10, LastPropertyLine);
         end;
 
         if Assigned(FindSQLDump) then

@@ -36,7 +36,7 @@ begin
   sl := TStringList.Create;
   try
     sl.LoadFromFile(Edit1.Text);
-    ScanDFM(sl.Text, Edit2.Text, Found2, []);
+    ScanDFM(sl.Text, Edit1.Text, Edit2.Text, Found2, []);
   finally
     sl.Free;
   end;

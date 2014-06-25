@@ -1,0 +1,50 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{de7d63df-4dd6-4237-9f83-87cde11a8b56}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="BigDFMSearchDXE5.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Test.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <BorlandProject>
+                <Default.Personality/>
+            </BorlandProject>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="BigDFMSearchDXE5">
+        <MSBuild Projects="BigDFMSearchDXE5.dproj"/>
+    </Target>
+    <Target Name="BigDFMSearchDXE5:Clean">
+        <MSBuild Projects="BigDFMSearchDXE5.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="BigDFMSearchDXE5:Make">
+        <MSBuild Projects="BigDFMSearchDXE5.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Test">
+        <MSBuild Projects="Test.dproj"/>
+    </Target>
+    <Target Name="Test:Clean">
+        <MSBuild Projects="Test.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Test:Make">
+        <MSBuild Projects="Test.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="BigDFMSearchDXE5;Test"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="BigDFMSearchDXE5:Clean;Test:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="BigDFMSearchDXE5:Make;Test:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

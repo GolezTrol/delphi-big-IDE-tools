@@ -341,7 +341,7 @@ begin
   end;
 
   // Threading thingy failed (no thread safe queue?) Just do it synchronous. It's fast enough.
-  ScanDFM(Code, ASearchText, DoFoundText, SearchOptions);
+  ScanDFM(Code, AFileName, ASearchText, DoFoundText, SearchOptions);
   //SearchThreadList.AddSearch(AFileName, Code, ASearchText, DoFoundText, SearchOptions);
 end;
 
@@ -517,7 +517,7 @@ var
   Reader: IOTAEditReader;
   Source: string;
   Position, Count: Integer;
-  Buffer: array[0..4096] of Char;
+  Buffer: array[0..4096] of AnsiChar;
 begin
   try
     Modules := (BorlandIDEServices as IOTAModuleServices);
