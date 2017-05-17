@@ -571,7 +571,7 @@ begin
 
             repeat
               Count := Reader.GetText(Position, Buffer, Count);
-              Source := Source + Copy(Buffer, 0, Count);
+              Source := Source + String(Copy(Buffer, 0, Count));
               Inc(Position, Count);
             until Count = 0;
             Reader := nil;
@@ -684,7 +684,7 @@ begin
         FRunningThread.OnTerminate := DoThreadTerminated;
         if Assigned(FOnStartFile) then
           FOnStartFile(q.FFileName);
-        FRunningThread.Resume;
+        FRunningThread.Start;
         q.Free;
       end
       else
