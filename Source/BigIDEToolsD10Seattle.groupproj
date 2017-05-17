@@ -1,0 +1,50 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{de7d63df-4dd6-4237-9f83-87cde11a8b56}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="BigDFMSearchD10Seattle.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="TestD10Seattle.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <BorlandProject>
+                <Default.Personality/>
+            </BorlandProject>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="BigDFMSearchD10Seattle">
+        <MSBuild Projects="BigDFMSearchD10Seattle.dproj"/>
+    </Target>
+    <Target Name="BigDFMSearchD10Seattle:Clean">
+        <MSBuild Projects="BigDFMSearchD10Seattle.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="BigDFMSearchD10Seattle:Make">
+        <MSBuild Projects="BigDFMSearchD10Seattle.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="TestD10Seattle">
+        <MSBuild Projects="TestD10Seattle.dproj"/>
+    </Target>
+    <Target Name="TestD10Seattle:Clean">
+        <MSBuild Projects="TestD10Seattle.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="TestD10Seattle:Make">
+        <MSBuild Projects="TestD10Seattle.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="BigDFMSearchD10Seattle;TestD10Seattle"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="BigDFMSearchD10Seattle:Clean;TestD10Seattle:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="BigDFMSearchD10Seattle:Make;TestD10Seattle:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

@@ -113,7 +113,7 @@ begin
   b := True;
   for i := 1 to Length(s) do
   begin
-    if (s[i] in [#13,#10,#9,#32]) then
+    if CharInSet(s[i], [#13,#10,#9,#32]) then
     begin
       if not b then
       begin
@@ -188,7 +188,7 @@ var
 
   procedure SkipWhiteSpace;
   begin
-    while (i <= Len) and (Code[i] in [' ', #9, #13, #10]) do
+    while (i <= Len) and CharInSet(Code[i], [' ', #9, #13, #10]) do
       IncI;
   end;
 
@@ -222,7 +222,7 @@ begin
           // Find an identifier (range of alphanumerical characters) and store it
           repeat
             IncI
-          until not (Code[i] in ['a'..'z', 'A'..'Z', '_', '0'..'9']);
+          until not CharInSet(Code[i], ['a'..'z', 'A'..'Z', '_', '0'..'9']);
           LastIdentifier := Copy(Code, j, i - j);
           if Code[i] <> '.' then
           begin
@@ -343,7 +343,7 @@ begin
               // Scan for numerals
               repeat
                 IncI;
-              until not (Code[i] in ['0'..'9']);
+              until not CharInSet(Code[i], ['0'..'9']);
               // If TryStrToInt failed, this means there are none or too many
               // digits following the #. This means the dfm is corrupt. Skip
               // the character and try to move on.
@@ -361,7 +361,7 @@ begin
 
             if (soStringsItemsAsSeparateStrings in SearchOptions) or // Treat all strings items as separate strings
                (LastItem = -1) or // Not in stringlist at all
-               (not (Code[i] in ['''', '#'])) // String is not continued. If LastItem > -1 and this is true, the dfm is corrupt!
+               (not CharInSet(Code[i], ['''', '#'])) // String is not continued. If LastItem > -1 and this is true, the dfm is corrupt!
             then
             begin
               DecI; // It will be incremented after the case.
