@@ -1,0 +1,50 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{de7d63df-4dd6-4237-9f83-87cde11a8b56}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="BigDFMSearchD10_3_Rio.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="TestD10_3_Rio.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <BorlandProject>
+                <Default.Personality/>
+            </BorlandProject>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="BigDFMSearchD10_3_Rio">
+        <MSBuild Projects="BigDFMSearchD10_3_Rio.dproj"/>
+    </Target>
+    <Target Name="BigDFMSearchD10_3_Rio:Clean">
+        <MSBuild Projects="BigDFMSearchD10_3_Rio.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="BigDFMSearchD10_3_Rio:Make">
+        <MSBuild Projects="BigDFMSearchD10_3_Rio.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="TestD10_3_Rio">
+        <MSBuild Projects="TestD10_3_Rio.dproj"/>
+    </Target>
+    <Target Name="TestD10_3_Rio:Clean">
+        <MSBuild Projects="TestD10_3_Rio.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="TestD10_3_Rio:Make">
+        <MSBuild Projects="TestD10_3_Rio.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="BigDFMSearchD10_3_Rio;TestD10_3_Rio"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="BigDFMSearchD10_3_Rio:Clean;TestD10_3_Rio:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="BigDFMSearchD10_3_Rio:Make;TestD10_3_Rio:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
